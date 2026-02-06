@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 
-  <!-- ВАЖНО: viewport-fit=cover -->
+  <!-- ВАЖНО: safe-area для iPhone/PWA -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <title>Вход</title>
@@ -14,7 +14,7 @@
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#0b1e3a">
 
-  <!-- iOS standalone -->
+  <!-- iOS PWA -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="./icons/icon-512.png">
@@ -24,14 +24,14 @@
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
 </head>
 
-<body>
+<body class="fade-in">
 
   <header class="topbar">
     <div class="brand">Вход</div>
     <div class="muted">Авторизация</div>
   </header>
 
-  <main class="container fade-in">
+  <main class="container">
     <div class="card">
       <h2>Войти</h2>
 
@@ -39,6 +39,10 @@
       <input
         id="login"
         autocomplete="username"
+        inputmode="text"
+        autocapitalize="none"
+        spellcheck="false"
+        placeholder="Введите логин"
         style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(31,41,55,.85);background:rgba(2,6,23,.35);color:#e5e7eb;"
       >
 
@@ -49,12 +53,16 @@
         id="pw"
         type="password"
         autocomplete="current-password"
+        inputmode="text"
+        autocapitalize="none"
+        spellcheck="false"
+        placeholder="Введите пароль"
         style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(31,41,55,.85);background:rgba(2,6,23,.35);color:#e5e7eb;"
       >
 
       <div style="height:14px"></div>
 
-      <button class="btn" id="btn">Войти</button>
+      <button class="btn" id="btn" type="button">Войти</button>
       <div id="err" class="muted" style="margin-top:10px;color:#fca5a5;"></div>
     </div>
   </main>
@@ -68,7 +76,7 @@
     const PASSWORD = "test";
 
     function go() {
-      const l = document.getElementById('login').value;
+      const l = document.getElementById('login').value.trim();
       const p = document.getElementById('pw').value;
 
       if (l === LOGIN && p === PASSWORD) {
@@ -83,8 +91,11 @@
       }
     }
 
-    document.getElementById('btn').onclick = go;
+    document.getElementById('btn').addEventListener('click', go);
     document.getElementById('pw').addEventListener('keydown', e => {
+      if (e.key === 'Enter') go();
+    });
+    document.getElementById('login').addEventListener('keydown', e => {
       if (e.key === 'Enter') go();
     });
   </script>
