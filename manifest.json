@@ -2,9 +2,12 @@
   "name": "ТЕСТ",
   "short_name": "ТЕСТ",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0b1e3a",
   "theme_color": "#0b1e3a",
+  "orientation": "portrait",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "icons/icon-192.png",
