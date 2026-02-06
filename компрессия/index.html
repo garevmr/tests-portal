@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111827">
+  <title>Тест: Компрессия</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class='fade-in'>
+<script>if(sessionStorage.getItem('quiz_auth')!=='1'){location.replace('../login.html');}</script>
+
+  <header class="topbar">
+    <div class="brand">Компрессия — тест</div>
+    <div class="top-right">
+      <div id="progress" class="progress">Загрузка…</div>
+      <button id="closeTest" class="chip danger" type="button">Закрыть</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="app" class="card">Загрузка…</div>
+  </main>
+
+<footer class="footer">
+  <div>Разработка: <b>Никита Давыдов</b> · © 2026</div>
+</footer>
+
+
+
+  <script src="app.js"></script>
+</body>
+</html>

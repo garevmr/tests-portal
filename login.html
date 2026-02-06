@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вход</title>
+  <link rel="stylesheet" href="portal.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Вход</div>
+    <div class="muted">Авторизация</div>
+  </header>
+  <main class="container fade-in">
+    <div class="card">
+      <h2>Войти</h2>
+      <div class="muted">Login</div>
+      <input id="login" placeholder="" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(31,41,55,.85);background:rgba(2,6,23,.35);color:#e5e7eb;" autocomplete="username">
+      <div style="height:10px"></div>
+      <div class="muted">Password</div>
+      <input id="pw" type="password" type="password" placeholder="" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(31,41,55,.85);background:rgba(2,6,23,.35);color:#e5e7eb;" autocomplete="current-password">
+      <div style="height:14px"></div>
+      <button class="btn" id="btn">Войти</button>
+      <div id="err" class="muted" style="margin-top:10px;color:#fca5a5;"></div>
+    </div>
+  </main>
+
+<footer class="footer">
+  <div>Разработка: <b>Никита Давыдов</b> · © 2026</div>
+</footer>
+
+
+  <script>
+    const LOGIN="test";
+    const PASSWORD="test";
+    function go(){
+      const l=document.getElementById('login').value;
+      const p=document.getElementById('pw').value;
+      if(l===LOGIN && p===PASSWORD){
+        sessionStorage.setItem('quiz_auth','1');
+        location.href='./index.html';
+      } else {
+        const e=document.getElementById('err');e.textContent='Неверный логин или пароль';document.querySelector('.card').classList.add('shake');setTimeout(()=>document.querySelector('.card').classList.remove('shake'),400);
+      }
+    }
+    document.getElementById('btn').onclick=go;
+    document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')go();});
+  </script>
+</body>
+</html>
